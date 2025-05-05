@@ -1,0 +1,15 @@
+<div class="charts">
+  <div class="chart-box">
+    <canvas baseChart
+      [data]="{
+        labels: subCategoryLabels,
+        datasets: [{ data: subCategoryData ,
+          backgroundColor: subCategoryColors,
+          hoverBackgroundColor: ['#2980b9', '#c0392b'],
+        }]
+      }"
+      [type]="subCategoryType"
+      [options]="pieChartOptions">
+    </canvas>
+  </div>
+</div>

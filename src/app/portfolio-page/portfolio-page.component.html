@@ -1,0 +1,91 @@
+<div class="container">
+  <!-- Header -->
+  <h1 class="title">Recommended Portfolio</h1>
+  <br>
+  <br>
+  <div class="charts">
+    <!-- Static Asset Class Pie Chart -->
+    <div class="chart-box">
+      <canvas baseChart
+        [data]="{
+          labels: assetClassChartLabels,
+          datasets: [{ data: assetClassChartData,
+            backgroundColor: assetClassChartColors,
+            hoverBackgroundColor: ['#2980b9', '#c0392b'],
+          }],
+        }"
+        [type]="pieChartType"
+        [options]="pieChartOptions">
+      </canvas>
+      <p class="chart-label">Total Investment Amount = ₹{{ portfolioData?.totalAmount }}</p>
+    </div>
+  
+    <!-- Sub-Category Pie Chart (Dynamic) -->
+    <div class="chart-box">
+      <app-chart [subClasses]="subClasses"></app-chart>
+      <p class="chart-label">{{ selectedAssetClass }} Sub-Category Distribution</p>
+    </div>
+  </div>
+  
+  <!-- Asset Class Buttons -->
+  <section class="selector-section">
+    <h2>Select Asset Class</h2>
+    <div class="asset-buttons">
+      <button *ngFor="let asset of assetClassChartData; let i = index" 
+          (click)="onAssetSelected(assetClassChartLabels[i])"
+          class="asset-button">
+      {{ assetClassChartLabels[i] }} - {{ asset }}%
+      </button>
+    </div>
+    </section>
+
+    <style>
+    .asset-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .asset-button {
+      background-color: #2ecc71;
+      color: white;
+      border: 2px solid #27ae60;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .asset-button:hover {
+      background-color: #27ae60;
+      transform: scale(1.1);
+    }
+
+    .asset-button:active {
+      background-color: #1e8449;
+    }
+    </style>
+
+  <!-- Sub-Class Buttons -->
+  <section class="selector-section">
+    <h2>Select Sub Class</h2>
+    <app-assets
+      [type]="'subclass'"
+      [subClasses]="subClasses"
+      (subClassSelected)="onSubClassSelected($event)">
+    </app-assets>
+  </section>
+
+  <!-- Products Table -->
+  <section class="products-section">
+    <h2>Products</h2>
+    <app-products
+      [selectedAssetClass]="selectedAssetClass"
+      [selectedSubClass]="selectedSubClassName">
+    </app-products>
+  </section>
+</div>

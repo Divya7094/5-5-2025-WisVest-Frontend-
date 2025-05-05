@@ -1,0 +1,68 @@
+.container {
+  
+    min-height: 100vh;
+    padding: 30px;
+  
+  }
+  
+  .title {
+    text-align: center;
+    color: #064635;
+  }
+  
+  .charts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  
+  .chart-box {
+    background: white;
+    width: 300px; /* Increased width */
+    height: auto; /* Let the height adjust as needed */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.1),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.6);
+    /* flex: 1 1 45%; This makes the charts responsive and ensures they take up equal space */
+  }
+  
+  .chart-label {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .selector-section {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .subclass-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    background: white;
+    border: 2px solid #064635;
+    color: #064635;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: #064635;
+    color: white;
+  }
+  
+  .products-section {
+    margin-top: 40px;
+  }
+  
